@@ -1,0 +1,17 @@
+{
+  "name": "tfjsp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.4.0",
+    "@tensorflow/tfjs-vis": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jerry",
+  "license": "ISC",
+  "browserslist": ["last 1 Chrome version"]
+}
