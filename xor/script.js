@@ -4,6 +4,7 @@ import {getData} from './data.js';
 
 window.onload = async () => {
     const data = getData(500);
+    console.log(data);
     tfvis.render.scatterplot(
         {name: 'XOR 训练数据'},
         {
