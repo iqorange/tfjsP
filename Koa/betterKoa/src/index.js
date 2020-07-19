@@ -1,10 +1,18 @@
-const koa = require('koa')
-const path = require('path')
-const app = new koa()
-const helmet = require('koa-helmet')
-const statics = require('koa-static')
+// const koa = require('koa')
+// const path = require('path')
 
-const router = require('./routes/routes')
+// import ES6 with webpack
+import koa from 'koa'
+import path from "path"
+import helmet from 'koa-helmet'
+import statics from 'koa-static'
+import router from './routes/routes'
+
+const app = new koa()
+
+// const helmet = require('koa-helmet')
+// const statics = require('koa-static')
+// const router = require('./routes/routes')
 
 // 构建安全的请求头
 app.use(helmet());
