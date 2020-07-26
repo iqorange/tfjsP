@@ -3,6 +3,8 @@ const nodeExternals = require('webpack-node-externals')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const { truncateSync } = require('fs')
 
+// debugger
+
 const webpackconfig = {
     target: 'node',
     mode: 'development',
@@ -40,5 +42,10 @@ const webpackconfig = {
         path: true
     }
 }
+
+// webpack中断调试
+console.log(webpackconfig)
+// npx node --inspect-brk ./node_modules/.bin/webpack --inline --progress
+// chrome://inspect
 
 module.exports = webpackconfig
