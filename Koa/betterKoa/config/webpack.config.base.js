@@ -1,21 +1,20 @@
+// 用于webpack通用的模式（生产+开发），通过cross-env
 const path = require('path')
+const utils = require('./utils')
+const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const { truncateSync } = require('fs')
 
-// debugger
-
 const webpackconfig = {
     target: 'node',
-    mode: 'development',
     entry: {
-        server: path.join(__dirname, 'src/index.js')
+        server: path.join(utils.APP_PATH, 'index.js')
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.join(__dirname, './dist')
+        path: utils.DIST_PATH
     },
-    devtool: 'eval-source-map',
     module: {
         rules: [
             {
@@ -29,7 +28,13 @@ const webpackconfig = {
     },
     externals: [nodeExternals()],
     plugins: [
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        // DefinePlugin创建全局常量，用于打包配置构建脚本
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod') ? "'production'" : "'development'"
+            }
+        })
     ],
     node: {
         console: true,
@@ -42,10 +47,5 @@ const webpackconfig = {
         path: true
     }
 }
-
-// webpack中断调试
-console.log(webpackconfig)
-// npx node --inspect-brk ./node_modules/.bin/webpack --inline --progress
-// chrome://inspect
 
 module.exports = webpackconfig

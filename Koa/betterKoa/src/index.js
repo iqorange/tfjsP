@@ -10,9 +10,13 @@ import router from './routes/routes'
 import koaBody from 'koa-body'
 import jsonutil from 'koa-json'
 import cors from '@koa/cors'
+// 整合koa中间件
 import compose from 'koa-compose'
+import compress from 'koa-compress'
 
 const app = new koa()
+
+const isDevMode = process.env.NODE_ENV === 'production' ? false : true
 
 // const helmet = require('koa-helmet')
 // const statics = require('koa-static')
@@ -41,6 +45,11 @@ const middleware = compose([
     // 请求头优化
     helmet()
 ])
+
+if(!isDevMode) {
+    // 生产模式使用压缩
+    app.use(compress())
+}
 
 app.use(middleware)
 app.use(router())
