@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "http/": "https://deno.land/std@0.62.0/http/",
+    "exec/": "https://cdn.depjs.com/exec@1.1.0/",
+    "path/": "https://deno.land/std@0.62.0/path/"
+  }
+}
