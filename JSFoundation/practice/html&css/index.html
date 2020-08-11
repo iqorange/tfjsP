@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="zh-cmn-Hans">
+    <head>
+        <title>test</title>
+        <meta charset="utf-8">
+        <style>
+            div {
+                margin: 10px;
+                padding: 15px;
+                width: 100px;
+                border: 1px;
+                box-sizing: border-box;
+            }
+            
+            #mdd {
+                font-size: 18vw;
+            }
+            
+            .clearfix:after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="mdd">abc123</div>
+        <span id="show"></span>
+        <script>
+            window.onload = () => {
+                var s = document.querySelector("span#show");
+                var d = document.querySelector("div#mdd");
+                s.innerHTML = d.offsetWidth;
+                alert(!!null);
+            }
+        </script>
+    </body>
+</html>

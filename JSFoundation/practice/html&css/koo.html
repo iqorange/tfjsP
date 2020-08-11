@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="aa"></div>
+    <script src="./koo.js"></script>
+    <script>
+        let count = 0;
+        // 延时计算
+        function fnk(){
+            if(count < 5){
+                count++;
+                console.log(count);
+                var timer = setTimeout(fnk,1000);
+            }
+        }
+        fnk();
+        // 立刻计算
+        for(let i=0;i<5;i++){
+            setTimeout(() => {
+                console.log(i);
+            }, 1000);
+        }
+
+        var k = new Koo("aa");
+        console.log(
+            k.html("abcv")
+            .on('click', (e) => {
+                e.stopPropagation()
+                e.preventDefault();
+                var nodeName = e.target.nodeName;
+                if(nodeName === 'A'){
+                    console.log("事件代理")
+                }
+                alert(123);
+            })
+            .html('sdfs')
+            .html()
+        );
+
+        function fn1(name, age) {
+            alert(name);
+            console.log(this);
+        }
+
+        fn1.call({x: 100}, 'kb', 20)
+        fn1.apply({x: 200}, ['kk', 15])
+
+        var fn2 = function fn2(name, age) {
+            alert(name);
+            console.log(this);
+        }.bind({y: 300})
+        fn2('abc', 9);
+    </script>
+</body>
+</html>

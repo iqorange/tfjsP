@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="./koo.js"></script>
+    <script>
+        var k = new Koo('app');
+        console.log(k.date());
+        console.log(k.rand())
+        var obj = {
+            name: 'abc',
+            age: 12
+        }
+        var arr = [1, 2, 3, 4, 5];
+        k.foreach(obj, (item, index) => {
+            console.log(item, index);
+        }).foreach(arr, (item, index) => {
+            console.log(item, index);
+        });
+        console.log(navigator.userAgent)
+        console.log(screen.width)
+        console.log(screen.height)
+        console.log(location.href)
+        console.log(location.protocol)
+        console.log(location.pathname)
+        console.log(location.search)
+        console.log(location.hash)
+        console.log(location.host)
+
+        var div1 = document.getElementById('div1')
+        k.bindEvent(div1, 'click', 'a', (e) => {
+            console.log(this.innerHTML)
+        });
+        var a = document.getElementById('ai')
+        k.bindEvent(a, 'click', (e) => {
+            console.log(a.innerHTML)
+        });
+    </script>
+</body>
+</html>
