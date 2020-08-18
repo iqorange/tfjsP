@@ -72,6 +72,18 @@
         }
         xhr.send(message);
     }
+    Koo.prototype.get(url, fn, message){
+        var e = XMLHttpRequest()
+        e.open('get', url, true)
+        e.onreadystatechange = () => {
+            if(e.readyState == 4){
+                if(e.status == 200){
+                    fn(e.responseText)
+                }
+            }
+        }
+        e.send(message)
+    }
     window.Koo = Koo;
 })(window)
 
