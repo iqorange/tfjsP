@@ -38,8 +38,20 @@ class TodoList extends Component {
                 inputValue: '',
                 // 键值对相同时可以简写
                 list
-            })
+            });
         }
+    }
+
+    // 点击这个元件自动删除
+    handleItemClick(index){
+        // 拷贝一个副本，保持数据安全
+        const list = [...this.state.list];
+        // 删除传过来的index值对应的元素
+        list.splice(index, 1);
+        // 重新进行赋值
+        this.setState({
+            list
+        });
     }
 
     render() {
@@ -53,12 +65,22 @@ class TodoList extends Component {
                     // this指向绑定bind，否则this会访问不到
                     // 数据驱动/响应式的编程思想
                     onChange={this.handleInputChange.bind(this)}
+                    // 会车自动添加到TodoList
                     onKeyUp={this.handleKeyUp.bind(this)}
                 />
                 <ul>
                     {this.state.list.map((value, index) => {
-                        // 加入key值可以让性能更高
-                        return <li key={index}>{value}</li>
+                        return (
+                            <li
+                                // 加入key值可以让性能更高
+                                key={index} 
+                                // 绑定一个可以点击删除的能力
+                                // 绑定作用域时把index传递过去
+                                onClick={this.handleItemClick.bind(this, index)}
+                            >
+                                {value}
+                            </li>
+                        )
                     })}
                 </ul>
             </Fragment>
