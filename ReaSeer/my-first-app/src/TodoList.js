@@ -9,8 +9,12 @@ class TodoList extends Component {
         super(props);
         // 定义变量参数数据
         this.state = {
-            inputValue: 'hello world',
-            list: []
+            inputValue: '',
+            list: [
+                'learn React',
+                'learn Component',
+                'learn React-Dom'
+            ]
         }
     }
     // 动态绑定数据内容
@@ -20,6 +24,22 @@ class TodoList extends Component {
         this.setState({
             inputValue: e.target.value
         });
+    }
+
+    // 采集用户回车键来快速加入TodoList
+    handleKeyUp(e){
+        if(e.keyCode === 13){
+            // input框中现在的对象
+            // this.state.inputValue
+            // 展开拷贝一份state中的list的内容到这里的list
+            const list = [...this.state.list, this.state.inputValue];
+            this.setState({
+                // 清空input框中的内容
+                inputValue: '',
+                // 键值对相同时可以简写
+                list
+            })
+        }
     }
 
     render() {
@@ -33,10 +53,13 @@ class TodoList extends Component {
                     // this指向绑定bind，否则this会访问不到
                     // 数据驱动/响应式的编程思想
                     onChange={this.handleInputChange.bind(this)}
+                    onKeyUp={this.handleKeyUp.bind(this)}
                 />
                 <ul>
-                    <li>learn React</li>
-                    <li>learn Component</li>
+                    {this.state.list.map((value, index) => {
+                        // 加入key值可以让性能更高
+                        return <li key={index}>{value}</li>
+                    })}
                 </ul>
             </Fragment>
         );
