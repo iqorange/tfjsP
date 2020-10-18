@@ -2,7 +2,7 @@
   <div id="app">
     <div class="layui-container layui-form-pane">
       <form class="layui-form" action="">
-        <div class="layui-form-item">
+        <div class="layui-form-item" :class="{'form-group--error':$v.name.$error}">
           <label class="layui-form-label">用户名</label>
           <div class="layui-input-block">
             <input type="text" name="title" v-model="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
@@ -30,6 +30,7 @@
 
 <script>
 import axios from 'axios'
+import {required, email} from 'vuelidate/lib/validators/'
 export default {
   name: 'app',
   data () {
@@ -39,6 +40,18 @@ export default {
       password: '',
       code: '',
       errorMsg: []
+    }
+  },
+  validations: {
+    name: {
+      required,
+      email
+    },
+    password: {
+      required
+    },
+    code: {
+      required
     }
   },
   mounted () {
