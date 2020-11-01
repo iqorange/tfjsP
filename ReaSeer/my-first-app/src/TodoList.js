@@ -12,7 +12,7 @@ class TodoList extends Component {
         // 构造时直接bind this，优化代码和性能
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleKeyUp = this.handleKeyUp.bind(this);
-        // 强制作用域绑定
+        // 强制作用域绑定，当父组件想要把函数传递给子组件时作用域要做到提升
         this.handleItemClick = this.handleItemClick.bind(this)
         // 定义变量参数数据
         this.state = {

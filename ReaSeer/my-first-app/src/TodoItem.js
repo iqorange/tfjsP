@@ -8,13 +8,16 @@ class TodoItem extends Component {
 
     // 点击时触发删除事件
     handleItemClick() {
+        // 组件引入
+        const { deleteFunction, index } = this.props;
         // 改变父组件中的list数据 数据驱动思想
-        this.props.deleteFunction(this.props.index)
+        deleteFunction(index)
     }
 
     render() {
         // 通过this.props接收父组件传过来的消息
         const { content } = this.props;
+        // 子组件想要和父组件通信，它要调用父组件传递过来的方法
         return <li onClick={this.handleItemClick}>{ content }</li>
     }
 }
