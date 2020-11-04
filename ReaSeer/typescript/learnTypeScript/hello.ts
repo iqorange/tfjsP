@@ -5,3 +5,4 @@ const hello = (name: string) => {
 console.log(hello('RCRC'))
 
 // tsc hello.ts
+// deno run hello.ts
