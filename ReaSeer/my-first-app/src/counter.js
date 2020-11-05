@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import Child from './child';
-import { autobind } from 'core-decorators';
 
 class Counter extends Component {
     constructor(props){
