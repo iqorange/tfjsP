@@ -27,3 +27,14 @@ notSure = true
 let numberOrString: number | string = 234
 numberOrString = 'abc'
 
+// 数组
+let arrayNumbers: number[] = [1, 2, 3, 4]
+
+function test() {
+    console.log(arguments)
+    arguments.length
+    let HTMLCollection: Node
+}
+
+// 元组 限定数据类型
+let user: [string, number] = ['viking', 1]
