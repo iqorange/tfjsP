@@ -19,6 +19,12 @@ class Counter extends Component {
 
     }
 
+    // 第一次Mounting，数据修改时不会执行
+    componentWillUnmount() {
+        console.log("componentWillUnmount")
+    }
+
+    // 渲染时自动执行
     render() {
         return (
             <Fragment>
@@ -28,6 +34,28 @@ class Counter extends Component {
                 <Child ref={(child) => { this.childElem = child }} number={this.state.counter} />
             </Fragment>
         )
+    }
+
+    // 挂载后自动执行
+    componentDidMount () {
+        console.log('componentDidMount')
+    }
+
+    // 数据更新前自动执行
+    shouldComponentUpdate () {
+        console.log('shouldComponentUpdate')
+        // 如果页面没有变可以用false让页面不渲染
+        return false
+    }
+
+    // 数据即将更新前自动执行
+    componentWillUpdate() {
+        console.log('componentWillUpdate')
+    }
+
+    // 数据更新后自动执行
+    componentDidUpdate() {
+        console.log('componentDidUpdate')
     }
 }
 
