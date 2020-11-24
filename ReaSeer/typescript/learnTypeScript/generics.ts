@@ -44,7 +44,7 @@ const queue = new Queue<number>()
 queue.add(1)
 
 interface KeyPair<K, U> {
-    key: T;
+    key: K;
     value: U;
 }
 
