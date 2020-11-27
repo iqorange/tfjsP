@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Child from './child';
+import Number from './number';
 
 class Counter extends Component {
     constructor(props){
@@ -32,6 +33,7 @@ class Counter extends Component {
                 <button ref={(button) => { this.buttomElem = button }} onClick={this.handleBtnClick}>增加</button>
                 {/* ref在组件上获取组件js实例 */}
                 <Child ref={(child) => { this.childElem = child }} number={this.state.counter} />
+                <Number count = {this.state.number} />
             </Fragment>
         )
     }
