@@ -59,6 +59,8 @@ class Counter extends Component {
     componentDidUpdate() {
         console.log('componentDidUpdate')
     }
+
+    // ComponentWillReceiveProps在props接收时会被执行
 }
 
 export default Counter;
