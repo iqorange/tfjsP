@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+    <head>
+        <title>勤工助学情况</title>
+        <meta charset="utf-8">
+        <link rel="prefetch" href="../images/font/cdm.ttf">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                color: #321500;
+            }
+            
+            @font-face{
+                font-family: myFont;
+                src: url("../images/font/cdm.ttf");
+　　      }
+            
+            span{
+                font-family: myFont;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app"  style="display: flex;align-items: center;height: 100vh;background-image: url(../images/graybar.jpg);background-size: 20px;">
+            <section style="width: 1536px;height: 720px;margin: 0px auto;box-shadow: 0px 0px 25px #acacac;border-radius: 13px;overflow: hidden;background-image: url(../images/main/map3.png);background-repeat: no-repeat;background-size: 100%;">
+                <section class="butts">
+                    <div style="color: #321500;opacity: 0.87;padding: 33px 23px;font-size: 16px;line-height: 1.75rem;">
+                        <span style="font-weight: bold;font-size: 20px;">勤工助学情况</span><br>
+                        <span>当前发布委托数：<b>10</b></span><br>
+                        <span>进行中的委托数：<b>2</b></span><br>
+                        <span>已完成的委托数：<b>3</b></span><br><br>
+                        <span style="background-color: #321500;color: #f3dd94;padding: 3px 12px;line-height: normal;border-radius: 3px;">返回</span>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <script src="../js/vue.js"></script>
+        <script>
+            var app = new Vue({
+              el: '#app',
+              data: {
+                message: 'Hello World!'
+              }
+            })
+        </script>
+    </body>
+</html>
