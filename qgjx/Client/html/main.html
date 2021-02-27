@@ -102,6 +102,38 @@
             ::-webkit-scrollbar {
                 display: none; /* Chrome Safari */
             }
+            
+            .accepst{
+                width: 130px;
+                background-color: darkgoldenrod;
+                color: white;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 3px;
+                margin: 0 auto;
+                font-weight: bold;
+                box-shadow: 0px 0px 6px #acacac;
+                transition: all 0.6s;
+            }
+            
+            .accepst:hover{
+                box-shadow: 0px 0px 16px #acacac;
+                transform: scale(1.06)
+            }
+            
+            .cards{
+                height: 568px;
+                width: 320px;
+                background-color: white;
+                float: right;
+                margin: 60px;
+                border-radius: 16px;
+                border: 16px solid white;
+                opacity: 0.8;
+                box-shadow: 0px 0px 60px #321500;
+                opacity: 1;
+                color: #321500;
+            }
         </style>
     </head>
     <body>
@@ -111,9 +143,9 @@
                     <div style="color: #321500;opacity: 0.87;padding: 23px 23px;font-size: 20px;line-height: 1.75rem;">
                         <span style="background-color: #321500;color: #f3dd94;padding: 3px 12px;line-height: normal;border-radius: 3px;font-size: 16px;">返回</span><br><br><br>
                         <span style="font-weight: bold;font-size: 26px;">勤工助学情况</span><br><div style="height: 16px;"></div>
-                        <span>当前发布委托数：<b>2</b></span><br>
+                        <span>当前发布委托数：<b>3</b></span><br>
                         <span>进行中的委托数：<b>2</b></span><br>
-                        <span>已完成的委托数：<b>3</b></span><br><br>
+                        <span>已完成的委托数：<b>13</b></span><br><br>
                     </div>
                 </section>
                 <section style="width: 1075px;height: 720px;margin: auto;margin-top: -289px;">
@@ -169,9 +201,11 @@
                     </div>
                 </section>
                 <section style="margin-top: -750px;">
-                    <div style="height: 568px;width: 320px;background-color: white;float: right;margin: 60px;border-radius: 16px;border: 16px solid white;opacity: 0.8;box-shadow: 0px 0px 60px #321500;opacity: 1;color: #321500;">
+                    <div class="cards">
                         <div style="margin: 10px;">
                             <div style="font-size: 28px;font-weight: bold;text-align: center;">
+                                
+                                
                                 精灵迷宫探索
                             </div>
                             <hr>
@@ -181,8 +215,9 @@
                                 <div><span class="ttns">委托时间</span>&nbsp;&nbsp;<span class="line">2021年 6 月 11 日</span></div>
                                 <div style="font-size: 8px;opacity: 0.6;margin-top: -10px;">*委托完成后可获得等额K币</div>
                                 <div><span class="ttns">委托内容</span></div>
-                                <div><span class="line" style="width: 100%;min-height: 130px;max-height: 230px;overflow-y: scroll;">委托内容</span></div>
+                                <div><span class="line" style="width: 100%;min-height: 130px;max-height: 200px;overflow-y: scroll;text-indent: 28px;opacity: 0.6;font-size: 14px;padding: 6px;line-height: 24px;">魔物大森林里突然出现了一个神秘的迷宫，传闻迷宫地下有大量未知的传奇宝物，同时也有凶狠的魔兽出现，大森林的盟主放出豪言迷宫绝对安全，具体可信度还存在疑问。勇敢的少年你已整装待发去探索与挑战关于迷宫深处的秘密。准备好了吗？对面可是魔物！肆虐、残暴这些词总是与他们挂钩，他们拥有强大的力量，他们的守护神龙目前还情报不明，流传于世间的消息众说纷纭，虽然有简单的贸易往来，最近又出现了个迷宫。一些人去后便杳无音讯不知所踪，但从东之商人那里却能经常听到不少绝世珍奇宝物的消息，如果你有足够的勇气就大胆地点击接受委托把！少年，去成就伟大的事业吧，此行你将得到一切，将会为这世间传唱、歌颂！</span></div>
                             </div>
+                            <div style="width: 100%;margin-top: 30px;"><div class="accepst">接下委托！</div></div>
                         </div>
                     </div>
                 </section>
@@ -191,10 +226,18 @@
         <script src="../js/vue.js"></script>
         <script>
             var app = new Vue({
-              el: '#app',
-              data: {
-                message: 'Hello World!'
-              }
+                el: '#app',
+                data: {
+                    message: 'Hello World!',
+                    cars: [
+                        {
+                            name: "精灵迷宫探索",
+                            bounty: "￥10,000,000",
+                            times: "2021年 6 月 11 日",
+                            detail: "魔物大森林里突然出现了一个神秘的迷宫，传闻迷宫地下有大量未知的传奇宝物，同时也有凶狠的魔兽出现，大森林的盟主放出豪言迷宫绝对安全，具体可信度还存在疑问。勇敢的少年你已整装待发去探索与挑战关于迷宫深处的秘密。准备好了吗？对面可是魔物！肆虐、残暴这些词总是与他们挂钩，他们拥有强大的力量，他们的守护神龙目前还情报不明，流传于世间的消息众说纷纭，虽然有简单的贸易往来，最近又出现了个迷宫。一些人去后便杳无音讯不知所踪，但从东之商人那里却能经常听到不少绝世珍奇宝物的消息，如果你有足够的勇气就大胆地点击接受委托把！少年，去成就伟大的事业吧，此行你将得到一切，将会为这世间传唱、歌颂！"
+                        }
+                    ]
+                }
             })
         </script>
     </body>
