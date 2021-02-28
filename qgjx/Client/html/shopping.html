@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ControlPad</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+                font-family: sans-serif;
+                color: #272727;
+            }
+            
+            .butts>div{
+                width: 260px;
+                transition: 1s all;
+                padding: 6px;
+                border-radius: 20px;
+                margin: -23px;
+                z-index: 1;
+            }
+            
+            .butts>div:hover{
+                transform: scale(1.1, 1.1);
+                box-shadow: 0px 0px 45px #acacac;
+                background-color: white;
+                z-index: 2;
+            }
+            
+            .ttll{
+                opacity: 0.6;
+                text-align: center;
+            }
+            
+            .ttll>span{
+                border: 2px dashed #666;
+                padding: 3px 8px;
+                border-radius: 3px;
+            }
+            
+            .dtti>div{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            
+             .line{
+                border: 1.6px dashed pink;
+                padding: 3px;
+                border-radius: 3px;
+                 opacity: 0.6
+            }
+            
+            .ttns{
+                color: white;
+                background-color: lightpink;
+                padding: 4.6px 8px;
+                border-radius: 3px;
+            }
+            
+            ::-webkit-scrollbar {
+                display: none; /* Chrome Safari */
+            }
+        </style>
+    </head>
+    <body style="display: flex;align-items: center;height: 100vh;background-image: url(../images/graybar.jpg);background-size: 20px;">
+        <section style="min-width: 1536px;height: 720px;margin: 0px auto;box-shadow: 0px 0px 25px #acacac;border-radius: 13px;overflow: hidden;background-image: url(../images/shopping/mapS.png);background-repeat: no-repeat;background-size: 100%;">
+            <div style="width: 100%;">
+                <div style="line-height: 20px;background-color: white;width: 40px;text-align: center;border-radius: 3px;padding: 3px;margin-top: 20px;margin-left: 20px;box-shadow: 0px 0px 15px #acacac;color: darkslategray;opacity: 0.9;">返回</div>
+            </div>
+            <div style="opacity: 0.95">
+                <div style="background-color: white;padding: 0px;width: 280px;height: 568px;margin: 40px;border-radius: 16px;box-shadow: 0px 0px 60px #acacac;overflow: hidden;">
+                    <div style="width: 100%;margin: 0 auto;margin-top: -30px;border-bottom: 13px solid pink;box-shadow: 0px 0px 13px pink">
+                        <img src="../images/shopping/img/pictures/Nature_6.png" width="100%;" style="display: block;">
+                    </div>
+                    <div style="margin: 13px 20px;" class="dtti">
+                        <div><span class="ttns">宠物姓名</span>&nbsp;&nbsp;<span class="line">拉米莉丝</span></div>
+                        <div><span class="ttns">饱腹感</span>&nbsp;&nbsp;<span class="line">非常满足</span></div>
+                        <div><span class="ttns">清洁度</span>&nbsp;&nbsp;<span class="line">ピカピカ</span></div>
+                        <div><span class="ttns">武力值</span>&nbsp;&nbsp;<span class="line">1300 / 虚无段</span></div>
+                        <div><span class="ttns">抵抗力</span>&nbsp;&nbsp;<span class="line">200 * 32</span></div>
+                        <div><span class="ttns">心情</span>&nbsp;&nbsp;<span class="line">极佳</span></div>
+                    </div>
+                </div>
+                <div style="margin-top: -608px;height: 568px;background-color: white;width: 1130px;margin-left: 360px;border-radius: 16px;box-shadow: 0px 0px 60px #acacac;">
+                    <div style="text-align: center;font-size: 30px;font-weight: thin;padding: 16px;color: darkgoldenrod;letter-spacing: 13px;text-shadow: 0px 0px 13px #ececec;">勤工商城-宠物中心</div>
+                    <div style="position: relative;left: 70px;padding: 3px;opacity: 0.6;">K币：13497697 G<span style="opacity: 0.6;font-size: 14px;">（购买时随机赠送三次元盲盒）</span></div>
+                    <div style="display: flex;justify-content: space-around;width: 1000px;margin: 0px auto;">
+                        <div style="width: 650px;height: 430px;margin: 0px auto;overflow-y: scroll;">
+                            <img src="../images/shopping/qqpet/1.png" width="100%">
+                        </div>
+                        <div style="width: 650px;height: 430px;margin: 0px auto;overflow-y: scroll;">
+                            <img src="../images/shopping/qqpet/2.png" width="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section style="display: flex;justify-content: space-around;width: 95%;margin: 0px auto; margin-top: -500px;" class="butts">
+                <!--        TODO 商店按钮：宠物中心和三次元广场        -->
+            </section>
+            
+        </section>
+    </body>
+</html>

@@ -203,7 +203,7 @@ Radar.prototype._addOneRiskPoint = function(options) {
     var dashed_circle = elements_group.querySelector('.dashed-circle'),
         red_flag = elements_group.querySelector('.red-flag'),
         info_panel = elements_group.querySelector('.info-panel');
-    dashed_circle.style.backgroundImage = 'url(' + this._getDashedCircleBg(dashed_circle.offsetWidth) + ')';
+//    dashed_circle.style.backgroundImage = 'url(' + this._getDashedCircleBg(dashed_circle.offsetWidth) + ')';
     
     // 计算和设置圆圈、红旗、信息面板的位置
     var dashed_circle_left = point_x * this._scaleFactor - dashed_circle.offsetWidth / 2,
