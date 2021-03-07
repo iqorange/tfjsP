@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <title>热点资讯</title>
+  <style>
+    #wrapper {
+      height: 720px;
+      width: 1436px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      font-size: 28px;
+      line-height: 58px;
+      text-shadow: 1px 1px #ececec;
+        margin-top: 260px;
+    }
+      span{
+          opacity: 0.8;
+      }
+    .right {
+      position: absolute;
+      visibility: hidden;
+      white-space: nowrap;
+      /*left: 700px;*/
+      transform: translateX(1536px);
+    }
+    .left {
+      position: absolute;
+      white-space: nowrap;
+      user-select: none;
+      transition: transform 13s linear; /* 时间相同 越长的弹幕滑动距离越长 所以越快~ */
+    }
+    input {
+      position: absolute;
+      bottom: 10px;
+      left: 150px;
+      width: 300px;
+      height: 26px;
+    }
+
+    button {
+      position: absolute;
+      bottom: 8px;
+      left: 476px;
+      width: 100px;
+      height: 38px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+      
+      span{
+          opacity: 0.6;
+          font-family: sans-serif;
+      }
+  </style>
+</head>
+<body style="margin: 0px;display: flex;align-items: center;width: 100vw;height: 100vh;background-image: url(../images/graybarS.jpg);background-size: 20px;">
+    <section style="background-image: url(../images/redian/td2.png);background-size: 100% 100%;height: 720px;width: 1536px;margin: 0px auto;">
+        <section>
+            <div id="wrapper"></div>
+            <div style="width: 1536px;height: 720px;margin-top: -980px;background-image: url(../images/redian/td3.png);background-repeat: no-repeat;background-size: 101% 100%;opacity: 0.999;"></div>
+        </section>
+        <section style="position: absolute;width: 1516px;height: 700px;margin-top: -720px;top: 0p;padding: 10px;">
+            <div style="opacity: 0.6;"><a href="../index.html" style="text-decoration: none;"><span style=";color: white;padding: 3px 12px;line-height: normal;border-radius: 3px;font-size: 16px;border: 2px dashed white;">返回</span></a></div>
+            <div style="font-size: 38px;color: white;font-weight: bold;opacity: 0.6;position: relative;top: 120px;text-align: center;text-shadow: 0px 0px 15px white;" id="detail">Hot search news</div>
+        </section>
+    </section>
+    <script src="../js/axios.min.js"></script>
+<script>
+    let colors = ['F44336', 'E91E63', '9C27B0', '673AB7', '3F51B5', 
+                  '2196F3', '03A9F4', '00BCD4', '009688', '4CAF50', 
+                  '8BC34A', 'CDDC39', 'FFEB3B', 'FFC107', 'FF9800', 
+                  'FF5722', '795548', '9E9E9E', '607D8B', '000000', '000000', '000000']
+
+    const MAX_DM_COUNT = 6;
+    const CHANNEL_COUNT = 10;
+
+    let domPool = [];
+    let danmuPool = [];
+    let hasPosition = [];
+    let linkPool = [];
+
+    function flash(){
+        axios.get('../data/hot/hotLink.json')
+            .then(function (response) {
+            for(let e of response.data){
+                danmuPool.push(e)
+            }
+//            console.log(danmuPool)
+//            console.log(linkPool)
+        })
+          .catch(function (error) {
+            console.log(error);
+        });
+    }
+    
+    flash()
+
+    function init() {
+      let wrapper = document.getElementById('wrapper')
+      for (let j = 0; j < CHANNEL_COUNT; j++) {
+        let doms = [];
+        for (let i = 0; i < MAX_DM_COUNT; i++) {
+          let dom = document.createElement('span');
+          wrapper.appendChild(dom);
+          dom.className = 'right';
+          dom.style.top = j * 60 + 'px';
+          doms.push(dom);
+          dom.addEventListener('transitionend', () => {
+            dom.className = 'right';
+            dom.style.transform = null;
+            domPool[j].push(dom);
+          });
+        }
+        domPool.push(doms);
+      }
+      for (let i = 0; i < CHANNEL_COUNT; i++) {
+        hasPosition[i] = true;
+      }
+    }
+
+    function getChannel() {
+      for (let i = 0; i < CHANNEL_COUNT; i++) {
+        if (hasPosition[i] && domPool[i].length) return i;
+      }
+      return -1;
+    }
+
+    function shootDanmu(dom, text, channel) {
+      console.log('biu~ [' + text + ']');
+      dom.innerText = text;
+      dom.style.transform = `translateX(${-dom.clientWidth}px)`;
+//      dom.style.color = '#' + colors[Math.random()*22];
+//      dom.style.fontSize = Math.floor(Math.random()*13 + 26);
+      dom.className = 'left';
+      hasPosition[channel] = false;
+      setTimeout(() => {
+        hasPosition[channel] = true;
+      }, dom.clientWidth * 10 + 1000);
+    }
+
+    window.onload = function() {
+      let detail = document.getElementById('detail');
+      init();
+      setInterval(() => {
+        let channel;
+          if(danmuPool.length < 3){
+              flash();
+          }
+        if ((channel = getChannel()) != -1) {
+          let dom = domPool[channel].shift();
+          let danmu = danmuPool.shift();
+          shootDanmu(dom, danmu[0], channel);
+          detail.onclick = function(){
+              window.open(danmu[1])
+          }
+        }
+      }, 1300);
+    }
+ 
+</script>
+</body>
+</html>
