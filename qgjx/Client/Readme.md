@@ -6,3 +6,5 @@ browser: Chrome
 
 index: index.html
 data: ./data/hot/dist/hotLink (pyinstaller -F ./data/hot/hotLink.py)
+
+start: npn start

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "《计算机图形学》",
+        "path": "data/files/graph.pdf"
+    },
+    {
+        "name": "电子竞技大赛策划书",
+        "path": "data/files/plot.docx"
+    },
+    {
+        "name": "剧组预算表",
+        "path": "data/files/budget.xlsx"
+    },
+    {
+        "name": "影视剧组通告单模板",
+        "path": "data/files/announce.xls"
+    },
+    {
+        "name": "学生行政管理助理应聘表",
+        "path": "data/filles/assistant1.doc"
+    },
+    {
+        "name": "乔纳森传---读后感",
+        "path": "data/files/thought.docx"
+    },
+    {
+        "name": "优秀毕业生留校工作申请表",
+        "path": "data/files/assistant.docx"
+    }
+]
