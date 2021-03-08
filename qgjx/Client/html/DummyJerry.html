@@ -12,6 +12,12 @@
                 display: block;
                 transition: 3s opacity;
             }
+            .block{
+                display: inline-block;
+                position: relative;margin-left: -20px;
+                min-height: 10px;
+                min-width: 10px;
+            }
         </style>
     </head>
     <body style="height: 100vh;width: 100vw;background-color: black;">
@@ -20,6 +26,26 @@
                 <img src="../images/shadow/aiM.png" height="100%" style="opacity: 0.1;position: relative;left: -13vw;" id="a1">
                 <img src="../images/shadow/a2.png" height="100%" style="opacity: 0;margin-top: -200vh;position: relative;left: -5vw" id="a2">
                 <img src="../images/shadow/a3.png" height="100%" style="opacity: 0;margin-top: -200vh;position: relative;left: 13vw" id="a3">
+            </section>
+            <section style="height: 100vh;margin-top: -200vh;color: white;">
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
             </section>
         </section>
         <script>
@@ -31,6 +57,24 @@
                 a2.style.opacity = Math.random() * 0.3;
                 a3.style.opacity = Math.random() * 0.3;
             }, 3000)
+        </script>
+        <script>
+            let colors = ['F44336', 'E91E63', '9C27B0', '673AB7', '3F51B5', 
+                  '2196F3', '03A9F4', '00BCD4', '009688', '4CAF50', 
+                  '8BC34A', 'CDDC39', 'FFEB3B', 'FFC107', 'FF9800', 
+                  'FF5722', '795548', '9E9E9E', '607D8B', '000000', '000000', '000000'];
+            var blocks = document.getElementsByClassName("block");
+            function run(){
+                for(let block of blocks){
+                    block.style.height = Math.random()*130 + 'px';
+                    block.style.width = Math.random()*600 + 'px';
+                    block.style.opacity = Math.random()*0.14;
+                    block.style.top = Math.random()*100 + 'vh';
+                    block.style.left = Math.random()*100 + 'vw';
+                    block.style.backgroundColor = "#" + colors[Math.floor(Math.random()*22)];;
+                }
+            }
+            setInterval(run, 40);
         </script>
         <script src="../js/tf.min.js"></script>
         <script src="../js/ml5.min.js"></script>
