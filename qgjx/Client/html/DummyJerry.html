@@ -62,15 +62,16 @@
             let colors = ['F44336', 'E91E63', '9C27B0', '673AB7', '3F51B5', 
                   '2196F3', '03A9F4', '00BCD4', '009688', '4CAF50', 
                   '8BC34A', 'CDDC39', 'FFEB3B', 'FFC107', 'FF9800', 
-                  'FF5722', '795548', '9E9E9E', '607D8B', '000000', '000000', '000000'];
+                  'FF5722', '795548', '9E9E9E', '607D8B', 'ffffff', 'ffffff', 'ffffff'];
             var blocks = document.getElementsByClassName("block");
             function run(){
                 for(let block of blocks){
-                    block.style.height = Math.random()*130 + 'px';
-                    block.style.width = Math.random()*600 + 'px';
+                    var r = Math.random()*600;
+                    block.style.height = r + 'px';
+                    block.style.width = 600-r + 'px';
                     block.style.opacity = Math.random()*0.14;
-                    block.style.top = Math.random()*100 + 'vh';
-                    block.style.left = Math.random()*100 + 'vw';
+                    block.style.top = Math.random()*110-10 + 'vh';
+                    block.style.left = Math.random()*110-10 + 'vw';
                     block.style.backgroundColor = "#" + colors[Math.floor(Math.random()*22)];;
                 }
             }

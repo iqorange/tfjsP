@@ -42,9 +42,17 @@
             a{
                 text-decoration: none;
             }
+            
+            .csds{
+                filter: invert(100%);
+            }
+            
+            #bggs{
+                transition: 1s all;
+            }
         </style>
     </head>
-    <body style="display: flex;align-items: center;height: 100vh;background-image: url(images/graybar.jpg);background-size: 20px;">
+    <body style="display: flex;align-items: center;height: 100vh;background-image: url(images/graybar.jpg);background-size: 20px;" id="bggs">
         <section style="width: 1536px;height: 720px;margin: 0px auto;box-shadow: 0px 0px 25px #acacac;border-radius: 13px;overflow: hidden;background-image: url(images/qimage/15.jpg);background-repeat: no-repeat;background-size: 100%;">
             <section style="display: flex;justify-content: space-around;width: 95%;margin: 20px auto;" class="butts">
                 <div style="position: relative;top: 270px;left: 20px;" onclick="jump('main')">
@@ -71,16 +79,16 @@
                         <span>文件下载</span>
                     </div>
                 </div>
-                <div style="position: relative;top: 290px;left: -50px;" onclick="jump('news')">
+                <div style="position: relative;top: 290px;left: -50px;" onclick="jump('DummyJerry')" onmouseover="move()" onmouseout="out()">
                     <img src="images/qimage/xwjj.png" width="100%">
                     <div class="ttll" style="position: relative;top: -16px;">
-                        <span>新闻聚焦</span>
+                        <span>DummyJerry</span>
                     </div>
                 </div>
                 <div style="position: relative;top: 50px;left: -30px;" onclick="jump('club')">
                     <img src="images/qimage/qglt.png" width="100%">
                     <div class="ttll" style="position: relative;top: -26px;">
-                        <span>勤工论坛</span>
+                        <span>勤工空间</span>
                     </div>
                 </div>
             </section>
@@ -88,6 +96,18 @@
         <script>
             function jump(edd){
                 window.location.href = "./html/" + edd + ".html"
+            }
+            
+            var bg = document.getElementById('bggs');
+            
+            function move(){
+                bg.style.backgroundImage = 'url(images/graybarS.jpg)';
+                bg.className = 'csds';
+            }
+            
+            function out(){
+                bg.style.backgroundImage = 'url(images/graybar.jpg)';
+                bg.className = '';
             }
         </script>
     </body>

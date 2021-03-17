@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base</title>
+</head>
+<body>
+    <script src="./vocal.js"></script>
+    <button onclick="collect(this)">助学情况</button>
+    <button onclick="collect(this)">热点资讯</button>
+    <button onclick="collect(this)">文件下载</button>
+    <button onclick="collect(this)">环境音</button><br>
+    <button onclick="save()">保存</button>
+    <pre id="count"></pre>
+    <button onclick="train()">训练</button>
+    <br><br>
+    监听开关：<input type="checkbox" onchange="toggle(this.checked)">
+</body>
+</html>
