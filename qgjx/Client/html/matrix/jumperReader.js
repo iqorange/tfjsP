@@ -42,8 +42,10 @@ window.toggle = async (checked) => {
             const labels = transferRecognizer.wordLabels();
             // 获取最大可能性index
             const index = scores.indexOf(Math.max(...scores));
-            // 预测结果
+            // 预测结果 TODO >>>
             console.log(labels[index]);
+            var r=confirm(labels[index]);
+            if (r) window.jump(labels[index]);
         }, {
             // 识别频率[0, 1)
             overlapFactor: 0,
