@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Draw</title>
+  <script src="./lib/index.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    canvas{
+      margin: 50px auto 0;
+      display: block;
+      /*background-color: #E18B2E;*/
+      border: 13px solid #344840;
+      border-radius: 13px;
+      box-shadow: 0px 0px 45px #acacac;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400">此浏览器不支持canvas</canvas>
+<script>
+  const ctx = document.getElementById('canvas')
+  const gl = ctx.getContext('webgl');
+  // 顶点着色器
+  const vss = 'attribute vec4 aPosition;void main() {gl_Position = aPosition;gl_PointSize = 10.0;}';
+  // 片元着色器
+  const fss = 'precision mediump float;uniform vec2 uColor;void main() {gl_FragColor = uColor;);}';
+  // 获取程序
+  const program =  initShader(gl, vss, fss);
+  // 拉取顶点参数
+  const aPosition = gl.getAttribLocation(program, 'aPosition')
+  // 设置顶点参数
+  gl.vertexAttrib2f(aPosition, 0.5, 0.5);
+  // 拉取颜色参数
+  const uColor = gl.getUniformLocation(program, 'uColor');
+  console.log(uColor)
+  // 设置颜色参数
+  gl.uniform4f(uColor, 0.0, 0.27, 0.61, 1.0)
+  // 绘制 参数：绘制什么图形，从哪里开始绘制，到哪里结束绘制
+  gl.drawArrays(gl.POINTS, 0, 1);
+  // const points = [];
+  // ctx.onclick = function (ev){
+  //   const x = ev.clientX;
+  //   const y = ev.clientY;
+  //
+  //   const domPosition = ev.target.getBoundingClientRect();
+  //   const domX = x - domPosition.left;
+  //   const domY = y - domPosition.top;
+  //   const halfWidth = ctx.offsetWidth / 2;
+  //   const halfHeight = ctx.offsetHeight / 2;
+  //   const clickX = (domX - halfWidth) / halfWidth;
+  //   const clickY = (halfHeight - domY) / halfHeight;
+  //   points.push({
+  //     clickX, clickY
+  //   })
+  //   for(let i = 0; i < points.length; i++){
+  //     gl.vertexAttrib2f(aPosition, points[i].clickX, points[i].clickY);
+  //     gl.drawArrays(gl.POINTS, 0, 1);
+  //   }
+
+  // }
+</script>
+</body>
+</html>

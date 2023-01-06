@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>learnToUseAttribute</title>
+  <script src="./lib/index.js"></script>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400">此浏览器不支持canvas</canvas>
+<script>
+  const gl = document.getElementById('canvas').getContext('webgl');
+  // 顶点着色器
+  const vss = 'attribute vec4 aPosition;void main() {gl_Position = aPosition;gl_PointSize = 30.0;}';
+  // 片元着色器
+  const fss = 'void main() {gl_FragColor = vec4(0.0, 0.265625, 0.60546875, 1.0);}';
+  // 拉取顶点参数
+  const aPosition = gl.getAttribLocation(initShader(gl, vss, fss), 'aPosition')
+  // 设置顶点参数
+  gl.vertexAttrib4f(aPosition, 0.5, 0.5, 0.0, 1.0);
+  // 绘制 参数：绘制什么图形，从哪里开始绘制，到哪里结束绘制
+  gl.drawArrays(gl.POINTS, 0, 1);
+
+  let x = 0.0;
+  setInterval(() => {
+    x += 0.1;
+    if(x > 1.0){
+      x = 0;
+    }
+    gl.vertexAttrib1f(aPosition, x);
+    gl.drawArrays(gl.POINTS, 0, 1);
+  }, 200)
+</script>
+</body>
+</html>

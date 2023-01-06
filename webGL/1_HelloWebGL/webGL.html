@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>webGL</title>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400">此浏览器不支持canvas</canvas>
+  <script>
+    // 获取Canvas元素
+    const ctx = document.getElementById('canvas')
+    // 获取wenGL对象
+    const gl = ctx.getContext('webgl')
+    // 设置颜色
+    gl.clearColor(0.0, 0.265625, 0.60546875, 1.0)
+    /*
+      gl.COLOR_BUFFER_BIT 设定颜色缓存0
+      gl.DEPTH_BUFFER_BIT 设定深度缓冲区
+      gl.STENCIL_BUFFER_BIT 设定模版缓冲区
+     */
+    gl.clear(gl.COLOR_BUFFER_BIT)
+  </script>
+</body>
+</html>
