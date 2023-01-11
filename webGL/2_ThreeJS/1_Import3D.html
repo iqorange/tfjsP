@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="lib/three.js"></script>
+</head>
+<body>
+
+<script>
+    // 创建一个场景
+    const scene = new THREE.Scene();
+    // 创建一个摄像机，参数：焦距 长宽比 裁剪起点 结束点，这里设置为屏幕比值
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    // 设置摄影机位置 x, y, z
+    camera.position.set(0, 3, 20);
+    // 创建渲染器
+    const renderer = new THREE.WebGLRenderer();
+    // 设置渲染器尺寸，这里设置成整个屏幕
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    // 把渲染器载入浏览器
+    document.body.appendChild(renderer.domElement);
+    // 添加一个立方体几何图形
+    const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+    // 给定立方体材质：颜色、线框
+    const cubeMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: false});
+    // 创建立方体
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    // 把立方体加入场景中
+    scene.add(cube);
+
+    // 添加球体
+    const sphereGeometry = new THREE.SphereGeometry(1, 10, 10);
+    const sphereMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true})
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere.position.x = 3;
+    scene.add(sphere);
+
+    const animation = () => {
+        // cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        // 加载场景和摄影机到渲染器中，实现渲染
+        renderer.render(scene, camera);
+        requestAnimationFrame(animation);
+    }
+    animation();
+</script>
+</body>
+</html>
