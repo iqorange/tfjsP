@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="lib/three.js"></script>
+</head>
+<body>
+
+<script>
+  // 创建一个场景
+  const scene = new THREE.Scene();
+  // 创建一个摄像机，参数：焦距 长宽比 裁剪起点 结束点，这里设置为屏幕比值
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+  // 设置摄影机位置 x, y, z
+  camera.position.set(0, 3, 20);
+  // 创建渲染器
+  const renderer = new THREE.WebGLRenderer();
+  // 设置渲染器尺寸，这里设置成整个屏幕
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  // 把渲染器载入浏览器
+  document.body.appendChild(renderer.domElement);
+  // 添加一个立方体几何图形
+  const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+  // 给定立方体材质：颜色、线框
+  const cubeMaterial = new THREE.MeshLambertMaterial({color: 0x193154, wireframe: false});
+  // 创建立方体
+  const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+  // 把立方体加入场景中
+  scene.add(cube);
+
+  // 添加球体
+  const sphereGeometry = new THREE.SphereGeometry(1, 10, 10);
+  const sphereMaterial = new THREE.MeshLambertMaterial({color: 0xE7A72F, wireframe: false})
+  const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+  sphere.position.x = 3;
+  sphere.position.y = 1;
+  scene.add(sphere);
+
+  // 添加一个平面
+   const planeGeometry = new THREE.PlaneGeometry(20, 30);
+   const planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+   const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+   plane.rotateZ(20);
+   plane.position.z = -10;
+   plane.position.x = 3;
+
+   scene.add(plane);
+
+    // 添加灯光 颜色 强度
+    const  spotLight = new THREE.SpotLight(0xffffff, 1);
+    spotLight.position.set(-10, 10, 75);
+    scene.add(spotLight);
+
+   // 生成阴影
+   cube.castShadow = true;
+   sphere.castShadow = true;
+   // 平面接收投影
+   plane.receiveShadow = true;
+   // 灯光开启阴影
+   spotLight.castShadow = true;
+   renderer.shadowMapEnabled = true;
+
+   const animation = () => {
+     // cube.rotation.x += 0.01;
+     cube.rotation.y += 0.01;
+
+     // 加载场景和摄影机到渲染器中，实现渲染
+     renderer.render(scene, camera);
+     requestAnimationFrame(animation);
+   }
+    animation();
+</script>
+</body>
+</html>
